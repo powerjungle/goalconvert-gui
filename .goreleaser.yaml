@@ -1,0 +1,59 @@
+release:
+  name_template: "{{.ProjectName}} v{{.Version}}"
+
+builds:
+  -
+    main: .
+    id: "lin-gui"
+    binary: goalconvert-gui
+    env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - 386
+    ldflags:
+      - -s
+      - -w
+  -
+    main: .
+    id: "win-gui-64bit"
+    binary: goalconvert-gui
+    env:
+      - CGO_ENABLED=1
+      - CC=x86_64-w64-mingw32-gcc
+    goos:
+      - windows
+    goarch:
+      - amd64
+    ldflags:
+      - -H=windowsgui
+      - -s
+      - -w
+  -
+    main: .
+    id: "win-gui-32bit"
+    binary: goalconvert-gui
+    env:
+      - CGO_ENABLED=1
+      - CC=i686-w64-mingw32-gcc
+    goos:
+      - windows
+    goarch:
+      - 386
+    ldflags:
+      - -H=windowsgui
+      - -s
+      - -w
+archives:
+  -
+    replacements:
+      amd64: 64bit
+      386: 32bit
+    format_overrides:
+      - goos: windows
+        format: zip
+checksum:
+  name_template: 'checksums.txt'
+

@@ -1,0 +1,5 @@
+*.exe
+*.apk
+.idea/
+dist/
+
