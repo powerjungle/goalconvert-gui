@@ -38,6 +38,13 @@ type allLabels struct {
 }
 
 func initAllLabels() *allLabels {
+	warnStyle := fyne.TextStyle{
+		Bold:      true,
+		Italic:    false,
+		Monospace: false,
+		TabWidth:  8,
+	}
+
 	return &allLabels{
 		unitsLabel:      widget.NewLabel("0"),
 		finAmountLabel:  widget.NewLabel("0"),
@@ -46,7 +53,7 @@ func initAllLabels() *allLabels {
 		finalTarPercA:   widget.NewLabel("0"),
 		finalTarMlP:     widget.NewLabel("0"),
 		finalTarMlD:     widget.NewLabel("0"),
-		notSetWarn:      widget.NewLabel("Initial ml and percentage are not set in the \"Units\" section!"),
+		notSetWarn:      widget.NewLabelWithStyle("Initial ml and percentage are not set in the \"Units\" section!", fyne.TextAlignCenter, warnStyle),
 	}
 }
 
