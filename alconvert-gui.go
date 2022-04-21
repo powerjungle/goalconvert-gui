@@ -182,7 +182,7 @@ func makeIOCanvasObjects(iWs1 *inputWidgets, iWs2 *inputWidgets,
 func makeMenu(app fyne.App, window fyne.Window) *fyne.MainMenu {
 	helpMenu := fyne.NewMenu("About",
 		fyne.NewMenuItem("GitHub Page", func() {
-			u, _ := url.Parse("https://github.com/powerjungle/goalconvert")
+			u, _ := url.Parse("https://github.com/powerjungle/goalconvert-gui")
 			_ = app.OpenURL(u)
 		}))
 	return fyne.NewMainMenu(
