@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"image/color"
 	"net/url"
 	"strconv"
 
@@ -161,7 +160,7 @@ func makeIOCanvasObjects(iWs1 *inputWidgets, iWs2 *inputWidgets,
 		co = append(co, cont2)
 	}
 
-	co = append(co, canvas.NewLine(color.White))
+	co = append(co, canvas.NewLine(theme.ForegroundColor()))
 
 	if iWs1 != nil {
 		co = append(co, iWs1.amountLabel, iWs1.amountEntry, iWs1.amountSlider)
@@ -181,7 +180,9 @@ func makeIOCanvasObjects(iWs1 *inputWidgets, iWs2 *inputWidgets,
 	return container.New(layout.NewVBoxLayout(), co...)
 }
 
-func makeMenu(app fyne.App, window fyne.Window) *fyne.MainMenu {
+func makeMenu() *fyne.MainMenu {
+	app := fyne.CurrentApp()
+
 	helpMenu := fyne.NewMenu("About",
 		fyne.NewMenuItem("GitHub Page", func() {
 			u, _ := url.Parse("https://github.com/powerjungle/goalconvert-gui")
@@ -215,7 +216,7 @@ func main() {
 	alcWindow := alcApp.NewWindow("goalconvert " + Version)
 	alcWindow.Resize(fyne.NewSize(600, 0))
 
-	alcWindow.SetMainMenu(makeMenu(alcApp, alcWindow))
+	alcWindow.SetMainMenu(makeMenu())
 	alcWindow.SetMaster()
 
 	aLa := initAllLabels()
