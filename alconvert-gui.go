@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"image/color"
 	"net/url"
@@ -11,6 +12,7 @@ import (
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
 	"github.com/powerjungle/goalconvert/alconvert"
@@ -185,16 +187,31 @@ func makeMenu(app fyne.App, window fyne.Window) *fyne.MainMenu {
 			u, _ := url.Parse("https://github.com/powerjungle/goalconvert-gui")
 			_ = app.OpenURL(u)
 		}))
+
 	return fyne.NewMainMenu(
 		helpMenu,
 	)
 }
 
+var (
+	darkTheme  = flag.Bool("dark", false, "start in dark theme")
+	lightTheme = flag.Bool("light", false, "start in light theme")
+)
+
 func main() {
+	flag.Parse()
+
 	av := alconvert.NewAV()
 
 	alcApp := app.NewWithID("com.github.goalconvert")
 	alcApp.SetIcon(resourceAlcGuIconPng)
+
+	if *darkTheme {
+		alcApp.Settings().SetTheme(theme.DarkTheme())
+	} else if *lightTheme {
+		alcApp.Settings().SetTheme(theme.LightTheme())
+	}
+
 	alcWindow := alcApp.NewWindow("goalconvert " + Version)
 	alcWindow.Resize(fyne.NewSize(600, 0))
 
