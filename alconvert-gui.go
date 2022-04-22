@@ -190,11 +190,18 @@ func makeIOCanvasObjects(iWs1 *inputWidgets, iWs2 *inputWidgets,
 func makeMenu() *fyne.MainMenu {
 	app := fyne.CurrentApp()
 
+	versionMenu := fyne.NewMenuItem(Version, func() {})
+
 	helpMenu := fyne.NewMenu("About",
 		fyne.NewMenuItem("GitHub Page", func() {
 			u, _ := url.Parse("https://github.com/powerjungle/goalconvert-gui")
 			_ = app.OpenURL(u)
-		}))
+		}),
+	)
+
+	if fyne.CurrentDevice().IsMobile() {
+		helpMenu.Items = append(helpMenu.Items, versionMenu)
+	}
 
 	return fyne.NewMainMenu(
 		helpMenu,
@@ -222,6 +229,9 @@ func main() {
 
 	alcWindow := alcApp.NewWindow("goalconvert " + Version)
 	alcWindow.Resize(fyne.NewSize(600, 0))
+
+	alcWindow.SetFixedSize(true)
+	alcWindow.CenterOnScreen()
 
 	alcWindow.SetMainMenu(makeMenu())
 	alcWindow.SetMaster()
