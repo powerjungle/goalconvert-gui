@@ -8,8 +8,12 @@ Using this you can convert
 [percentage](https://en.wikipedia.org/wiki/Alcohol_by_volume) and
 [units](https://en.wikipedia.org/wiki/Unit_of_alcohol).
 
-You can checkout dosages for units here:
-https://psychonautwiki.org/wiki/Alcohol
+The units are the UK definition which you can checkout here:
+https://www.nhs.uk/live-well/alcohol-advice/calculating-alcohol-units/
+
+From the above link:
+"One unit equals 10ml or 8g of pure alcohol, which is around the amount of
+alcohol the average adult can process in an hour."
 
 This project is not for the endorsement of alcohol consumption.
 The aim is to help people get a perspective of what different amounts mean.
