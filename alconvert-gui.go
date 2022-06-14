@@ -17,7 +17,7 @@ import (
 	"github.com/powerjungle/goalconvert/alconvert"
 )
 
-var Version = "v1.0.2"
+var Version = "post-v1.0.2-dev"
 
 func alcCalcAll(alcval *alconvert.Alcovalues) {
 	alcval.CalcGotUnits()
