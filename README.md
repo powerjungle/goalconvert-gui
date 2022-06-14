@@ -1,6 +1,6 @@
 # Go Alcohol Converter (GUI)
 
-<img src="AlcGuIcon.png" alt="drawing" width="150"/>
+<img src="AlcGuIcon.svg" alt="drawing" width="150"/>
 
 Using this you can convert
 [alcohol (drinkable)](https://en.wikipedia.org/wiki/Alcohol_(drug))
@@ -127,8 +127,8 @@ Afterwards this tool needs to be installed:
 Then the old rsrc file needs to be replaced with the following command:
 
 ```
-rsrc -ico AlcGuIcon-64x64.ico,AlcGuIcon-48x48.ico,AlcGuIcon-32x32.ico,AlcGuIcon-16x16.ico -arch amd64 && \
-rsrc -ico AlcGuIcon-64x64.ico,AlcGuIcon-48x48.ico,AlcGuIcon-32x32.ico,AlcGuIcon-16x16.ico -arch 386
+rsrc -ico AlcGuIcon-64x64.ico -arch amd64 && \
+rsrc -ico AlcGuIcon-64x64.ico -arch 386
 ```
 
 Change the .ico files to the appropriate names and change the command
